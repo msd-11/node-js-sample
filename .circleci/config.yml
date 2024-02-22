@@ -18,3 +18,9 @@ jobs:
             wget http://localhost:8080
             docker stop myapp_container
             docker rm myapp_container
+      - run:
+          name: Push Docker image to Docker Hub
+          command: |
+            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+            docker tag myapp $DOCKER_USERNAME/myapp
+            docker push $DOCKER_USERNAME/myapp
