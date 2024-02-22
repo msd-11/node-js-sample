@@ -16,6 +16,6 @@ jobs:
           command: |
             docker run -d -p 8080:8080 --name myapp_container myapp
             sleep 5 # Wait for the container to start
-            curl -sSf http://localhost:3000 # Test if the application responds
+            wget http://localhost:8080 # Test if the application responds
             docker stop myapp_container # Stop the container
             docker rm myapp_container # Remove the container
